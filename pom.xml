@@ -4,22 +4,375 @@
 
   <groupId>com.discovery.darchrow</groupId>
   <artifactId>darchrow</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <packaging>jar</packaging>
-
-  <name>darchrow</name>
-  <url>http://maven.apache.org</url>
-
+  <version>1.0</version>
+  
+  <packaging>pom</packaging>
+  
+  <name>sample-parent</name>
+  <description>sample-parent</description>
+  
+  <inceptionYear>2016</inceptionYear>
+  
   <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
+  	<version.sample>1.0</version.sample>
+  	
+  	<!-- 让整个项目统一字符集编码 -->
+	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
+	<!-- **********************begin maven-compiler-plugin config******************************************* -->
+	<maven-compiler-plugin.source>1.8</maven-compiler-plugin.source>
+	<maven-compiler-plugin.target>1.8</maven-compiler-plugin.target>
+	<maven-compiler-plugin.encoding>${project.build.sourceEncoding}</maven-compiler-plugin.encoding>
+	<v.maven-clean-plugin>2.6.1</v.maven-clean-plugin>
+	<v.maven-compiler-plugin>3.3</v.maven-compiler-plugin>
+	<v.maven-dependency-plugin>2.10</v.maven-dependency-plugin>
+	<v.maven-install-plugin>2.5.2</v.maven-install-plugin>
+	<v.maven-jar-plugin>2.6</v.maven-jar-plugin>
+	<v.maven-javadoc-plugin>2.10.3</v.maven-javadoc-plugin>
+	<v.maven-site-plugin>3.4</v.maven-site-plugin>
+	<v.maven-assembly-plugin>2.5.5</v.maven-assembly-plugin>
+	<v.maven-source-plugin>2.4</v.maven-source-plugin>
+	<v.maven-surefire-plugin>2.17</v.maven-surefire-plugin>
+	<v.maven-release-plugin>2.5.2</v.maven-release-plugin>
+	<v.maven-resources-plugin>2.7</v.maven-resources-plugin>
+
+	<v.maven-war-plugin>2.6</v.maven-war-plugin>
+	<v.tomcat7-maven-plugin>2.0</v.tomcat7-maven-plugin>
+	<tomcat7.path>/</tomcat7.path>
+	<!-- **********************end maven-compiler-plugin config******************************************* -->
+  	
+  	
+  	<version.commons-beanutils>1.9.2</version.commons-beanutils>
+	<version.commons-codec>1.9</version.commons-codec>
+	<version.commons-collections>3.2.1</version.commons-collections>
+	<version.commons-configuration>1.10</version.commons-configuration>
+	<version.commons-digester>2.1</version.commons-digester>
+	<version.commons-email>1.3.3</version.commons-email>
+	<version.commons-fileupload>1.3.1</version.commons-fileupload>
+	<version.commons-httpclient>3.1</version.commons-httpclient>
+	<!-- base on jdk1.2 legacy(won't update) -->
+	<version.commons-lang>2.6</version.commons-lang>
+	<version.commons-lang3>3.4</version.commons-lang3>
+	<version.commons-logging>1.2</version.commons-logging>
+	<version.commons-io>2.4</version.commons-io>
+	<version.commons-net>3.2</version.commons-net>
+	<version.commons-jexl>2.1.1</version.commons-jexl>
+	
+	<version.fastjson>1.2.6</version.fastjson>
+	<!-- spring -->
+	<version.spring>4.3.2.RELEASE</version.spring>
+	<version.spring.security>3.2.9.RELEASE</version.spring.security>
+	
+	<!-- jsp -->
+	<version.jsp-api>2.2</version.jsp-api>
+	<version.el-api>2.2</version.el-api>
+	<version.jstl>1.2</version.jstl>
+	<version.servlet-api>3.0.1</version.servlet-api>
+	
+  	
+  	<version.logback>1.1.3</version.logback>
+  	<version.slf4j>1.7.12</version.slf4j>
+  	<!-- net.sf.json-lib -->
+	<version.json-lib>2.4</version.json-lib>
+	
+  	<version.junit>4.12</version.junit>
+  	<version.easymock>3.1</version.easymock>
+  	<version.velocity>1.7</version.velocity>
+	<version.velocity-tools>2.0</version.velocity-tools>
+  </properties>
   <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
+  
+  		<!--******** logback (默认log实现是logback，所有 sample项目均采用该实现) optional为true，依赖的项目可以灵活配置自己的log系统 
+			******** -->
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>jul-to-slf4j</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>jcl-over-slf4j</artifactId>
+		</dependency>
+
+		<!-- log4j桥接 -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>log4j-over-slf4j</artifactId>
+		</dependency>
+  
+  		<!--***************************** test************************** -->
+		<!-- junit -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.easymock</groupId>
+			<artifactId>easymock</artifactId>
+			<scope>test</scope>
+		</dependency>
   </dependencies>
+  
+  <dependencyManagement>
+  	<dependencies>
+  		<!-- *********************apache******************************* -->
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>${version.commons-logging}</version>
+		</dependency>
+
+		<!-- commons-lang -->
+		<dependency>
+			<artifactId>commons-lang</artifactId>
+			<groupId>commons-lang</groupId>
+			<version>${version.commons-lang}</version>
+		</dependency>
+
+		<!-- commons-lang3 -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>${version.commons-lang3}</version>
+		</dependency>
+
+		<!-- commons-net -->
+		<dependency>
+			<groupId>commons-net</groupId>
+			<artifactId>commons-net</artifactId>
+			<version>${version.commons-net}</version>
+		</dependency>
+
+		<!-- commons-httpclient -->
+		<dependency>
+			<groupId>commons-httpclient</groupId>
+			<artifactId>commons-httpclient</artifactId>
+			<version>${version.commons-httpclient}</version>
+		</dependency>
+
+		<!-- commons-beanutils -->
+		<dependency>
+			<groupId>commons-beanutils</groupId>
+			<artifactId>commons-beanutils</artifactId>
+			<version>${version.commons-beanutils}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>${version.commons-codec}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-jexl</artifactId>
+			<version>${version.commons-jexl}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-digester</groupId>
+			<artifactId>commons-digester</artifactId>
+			<version>${version.commons-digester}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-email</artifactId>
+			<version>${version.commons-email}</version>
+		</dependency>
+
+		<!--通用接口，它可以使应用程序通过多种途径读取配置信 -->
+		<dependency>
+			<groupId>commons-configuration</groupId>
+			<artifactId>commons-configuration</artifactId>
+			<version>${version.commons-configuration}</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>commons-lang</artifactId>
+					<groupId>commons-lang</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>commons-logging</artifactId>
+					<groupId>commons-logging</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<!-- commons-collections -->
+		<dependency>
+			<groupId>commons-collections</groupId>
+			<artifactId>commons-collections</artifactId>
+			<version>${version.commons-collections}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>${version.commons-fileupload}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>${version.commons-io}</version>
+		</dependency>
+  		<!--******** logback ******** -->
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-core</artifactId>
+			<version>${version.logback}</version>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>${version.logback}</version>
+		</dependency>
+
+		<!--jul桥接 用来输出 Java Logging Framework (JUL) java.util.logging.* -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>jul-to-slf4j</artifactId>
+			<version>${version.slf4j}</version>
+		</dependency>
+
+		<!-- jcl桥接，用来输出 第三方Jakarta Commons Logging (JCL) -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>jcl-over-slf4j</artifactId>
+			<version>${version.slf4j}</version>
+		</dependency>
+
+		<!-- log4j桥接 -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>log4j-over-slf4j</artifactId>
+			<version>${version.slf4j}</version>
+		</dependency>
+  		<dependency>
+	  		<groupId>com.mdl.sample</groupId>
+			<artifactId>sample-utilities</artifactId>
+			<version>${version.sample}</version>
+  		</dependency>
+  		
+  		<!-- junit -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${version.junit}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.easymock</groupId>
+			<artifactId>easymock</artifactId>
+			<version>${version.easymock}</version>
+			<scope>test</scope>
+		</dependency>
+		
+		<!-- jsp-api -->
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>jsp-api</artifactId>
+			<version>${version.jsp-api}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.el</groupId>
+			<artifactId>el-api</artifactId>
+			<version>${version.el-api}</version>
+			<scope>provided</scope>
+		</dependency>
+		
+		<!-- jstl -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>${version.jstl}</version>
+		</dependency>
+		
+
+		<!-- servlet-api -->
+		<!-- -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>${version.servlet-api}</version>
+			<scope>provided</scope>
+		</dependency>
+  	</dependencies>
+  </dependencyManagement>
+  
+  <build>
+  	<plugins>
+  		<!-- maven-resources-plugin插件 -->
+		<plugin>
+			<artifactId>maven-resources-plugin</artifactId>
+			<version>${v.maven-resources-plugin}</version>
+			<configuration>
+				<encoding>${project.build.sourceEncoding}</encoding>
+				<includeEmptyDirs>true</includeEmptyDirs>
+			</configuration>
+			<executions>
+				<execution>
+					<id>default-resources</id>
+					<phase>process-resources</phase>
+					<goals>
+						<goal>resources</goal>
+					</goals>
+					<configuration>
+						<detail>true</detail>
+					</configuration>
+				</execution>
+				<execution>
+					<id>default-testResources</id>
+					<phase>process-test-resources</phase>
+					<goals>
+						<goal>testResources</goal>
+					</goals>
+				</execution>
+			</executions>
+		</plugin>
+
+		<!-- maven-compiler-plugin -->
+		<plugin>
+			<!-- true or false，是否此插件配置将会应用于poms，那些继承于此的项目 -->
+			<inherited>true</inherited>
+
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-compiler-plugin</artifactId>
+			<version>${v.maven-compiler-plugin}</version>
+			<configuration>
+				<!-- 指定高版本的源码和编译后的字节码文件 -->
+				<source>${maven-compiler-plugin.source}</source>
+				<target>${maven-compiler-plugin.target}</target>
+				<encoding>${maven-compiler-plugin.encoding}</encoding>
+				<!-- <verbose>true</verbose> -->
+				<detail>true</detail>
+			</configuration>
+		</plugin>
+
+		<!-- maven-jar-plugin -->
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-jar-plugin</artifactId>
+			<version>${v.maven-jar-plugin}</version>
+			<configuration>
+				<archive>
+					<addMavenDescriptor>false</addMavenDescriptor>
+				</archive>
+			</configuration>
+		</plugin>
+  	</plugins>
+  </build>
 </project>
