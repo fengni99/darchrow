@@ -59,6 +59,10 @@
 	<version.commons-jexl>2.1.1</version.commons-jexl>
 	
 	<version.fastjson>1.2.6</version.fastjson>
+	
+	<!-- redis -->
+	<version.jedis>2.6.2</version.jedis>
+	
 	<!-- spring -->
 	<version.spring>4.3.2.RELEASE</version.spring>
 	<version.spring.security>3.2.9.RELEASE</version.spring.security>
@@ -263,6 +267,12 @@
 			<artifactId>sample-utilities</artifactId>
 			<version>${version.sample}</version>
   		</dependency>
+  		
+  		<dependency>
+			<groupId>redis.clients</groupId>
+			<artifactId>jedis</artifactId>
+			<version>${version.jedis}</version>
+		</dependency>
   		
   		<!-- junit -->
 		<dependency>
