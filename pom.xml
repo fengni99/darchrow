@@ -64,8 +64,10 @@
 	<version.jedis>2.6.2</version.jedis>
 	
 	<!-- spring -->
-	<version.spring>4.3.2.RELEASE</version.spring>
+	<version.spring>4.3.3.RELEASE</version.spring>
 	<version.spring.security>3.2.9.RELEASE</version.spring.security>
+	<version.spring-data-redis>1.7.1.RELEASE</version.spring-data-redis>
+	<version.spring-session>1.2.2.RELEASE</version.spring-session>
 	
 	<!-- jsp -->
 	<version.jsp-api>2.2</version.jsp-api>
@@ -267,6 +269,12 @@
 			<artifactId>sample-utilities</artifactId>
 			<version>${version.sample}</version>
   		</dependency>
+  		
+  		<!-- <dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-redis</artifactId>
+			<version>${version.spring-data-redis}</version>
+		</dependency> -->
   		
   		<dependency>
 			<groupId>redis.clients</groupId>
