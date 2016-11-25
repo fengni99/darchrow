@@ -81,6 +81,8 @@
   	<!-- net.sf.json-lib -->
 	<version.json-lib>2.4</version.json-lib>
 	
+	<version.esapi>2.1.0</version.esapi>
+	
   	<version.junit>4.12</version.junit>
   	<version.easymock>3.1</version.easymock>
   	<version.velocity>1.7</version.velocity>
@@ -331,6 +333,11 @@
 			<artifactId>javax.servlet-api</artifactId>
 			<version>${version.servlet-api}</version>
 			<scope>provided</scope>
+		</dependency>
+		<dependency>
+				<groupId>org.owasp.esapi</groupId>
+				<artifactId>esapi</artifactId>
+				<version>${version.esapi}</version>
 		</dependency>
 		<!-- springframework -->
 		<dependency>
