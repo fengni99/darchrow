@@ -40,7 +40,7 @@
 	<v.tomcat7-maven-plugin>2.0</v.tomcat7-maven-plugin>
 	<tomcat7.path>/</tomcat7.path>
 	<!-- **********************end maven-compiler-plugin config******************************************* -->
-  	
+  	<version.aspectjweaver>1.6.8</version.aspectjweaver>
   	
   	<version.commons-beanutils>1.9.2</version.commons-beanutils>
 	<version.commons-codec>1.9</version.commons-codec>
@@ -66,7 +66,7 @@
 	<!-- spring -->
 	<version.spring>4.3.3.RELEASE</version.spring>
 	<version.spring.security>3.2.9.RELEASE</version.spring.security>
-	<version.spring-data-redis>1.7.1.RELEASE</version.spring-data-redis>
+	<version.spring-data-redis>1.5.1.RELEASE</version.spring-data-redis>
 	<version.spring-session>1.2.2.RELEASE</version.spring-session>
 	
 	<!-- jsp -->
@@ -93,6 +93,13 @@
 	<version.druid>1.0.14</version.druid>
 	<version.mybatis>3.3.0 </version.mybatis>
 	<version.mybatis-spring>1.2.3</version.mybatis-spring>
+	
+	<!-- about dubbo -->
+	<version.dubbo>2.5.3</version.dubbo>
+	<version.zkclient>0.5</version.zkclient>
+	
+	<version.jasypt>1.9.2</version.jasypt>
+	<version.bouncycastle>1.50</version.bouncycastle>
 	
   </properties>
   <dependencies>
@@ -179,6 +186,12 @@
 			<groupId>commons-httpclient</groupId>
 			<artifactId>commons-httpclient</artifactId>
 			<version>${version.commons-httpclient}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>${version.aspectjweaver}</version>
 		</dependency>
 
 		<!-- commons-beanutils -->
@@ -284,11 +297,11 @@
 			<version>${version.sample}</version>
   		</dependency>
   		
-  		<!-- <dependency>
+  		<dependency>
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-redis</artifactId>
 			<version>${version.spring-data-redis}</version>
-		</dependency> -->
+		</dependency>
   		
   		<dependency>
 			<groupId>redis.clients</groupId>
@@ -346,6 +359,66 @@
 				<artifactId>esapi</artifactId>
 				<version>${version.esapi}</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>org.jasypt</groupId>
+			<artifactId>jasypt</artifactId>
+			<version>${version.jasypt}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jasypt</groupId>
+			<artifactId>jasypt-spring31</artifactId>
+			<version>${version.jasypt}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.bouncycastle</groupId>
+			<artifactId>bcprov-jdk15on</artifactId>
+			<version>${version.bouncycastle}</version>
+		</dependency>
+	
+		<!--********************** 分布式服务：dubbo ************************* -->
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>dubbo</artifactId>
+				<version>${version.dubbo}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>org.springframework</groupId>
+						<artifactId>spring</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+
+			<!--********************** 注册中心: zookeeper ************************* -->
+			<dependency>
+				<groupId>com.101tec</groupId>
+				<artifactId>zkclient</artifactId>
+				<version>${version.zkclient}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>junit</groupId>
+						<artifactId>junit</artifactId>
+					</exclusion>
+
+					<exclusion>
+						<artifactId>slf4j-api</artifactId>
+						<groupId>org.slf4j</groupId>
+					</exclusion>
+
+					<exclusion>
+						<artifactId>slf4j-log4j12</artifactId>
+						<groupId>org.slf4j</groupId>
+					</exclusion>
+
+					<exclusion>
+						<artifactId>log4j</artifactId>
+						<groupId>log4j</groupId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+		
 		<!-- springframework -->
 		<dependency>
 			<groupId>org.springframework</groupId>
