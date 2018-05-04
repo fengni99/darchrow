@@ -61,12 +61,12 @@
 	<version.fastjson>1.2.6</version.fastjson>
 	
 	<!-- redis -->
-	<version.jedis>2.6.2</version.jedis>
+	<version.jedis>2.8.2</version.jedis>
 	
 	<!-- spring -->
 	<version.spring>4.3.3.RELEASE</version.spring>
 	<version.spring.security>3.2.9.RELEASE</version.spring.security>
-	<version.spring-data-redis>1.7.4.RELEASE</version.spring-data-redis>
+	<version.spring-data-redis>1.7.11.RELEASE</version.spring-data-redis>
 	<version.spring-session>1.2.2.RELEASE</version.spring-session>
 	
 	<!-- jsp -->
@@ -266,7 +266,6 @@
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>${version.junit}</version>
-			<scope>test</scope>
 		</dependency>
 
 		<dependency>
